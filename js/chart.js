@@ -13,7 +13,7 @@ function Chart(testId) {
 }
 
 Chart.URL_FORMAT = 'http://www.browserscope.org/user/tests/table/{ID}?o=json&callback=?';
-Chart.MODERN = /Firefox [4-9]|Chrome 1[0-9]|IE 9|IE 10|Safari [5-9]/;
+Chart.MODERN = /Firefox ([4-9]|[1-2][0-9])|Chrome [1-2][0-9]|IE 9|IE 1[0-9]|Safari ([5-9]|1[0-9])/;
 Chart.MOBILE = /iPhone|iPad|Android/
 
 /**
