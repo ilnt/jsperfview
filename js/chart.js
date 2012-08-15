@@ -60,7 +60,7 @@ function parseChart_(response) {
       }
       // Compute series data
       var result = parseInt(platformResults[testName].result, 10);
-      if (result && !isNaN(result)) {
+      if (typeof result === 'number' && !isNaN(result)) {
         data.push(result);
       }
     }
