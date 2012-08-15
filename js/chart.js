@@ -87,7 +87,8 @@ function parseChart_(response) {
 function renderChart_(chartInfo, id, type) {
   chartInfo.chart = {
     renderTo: id,
-    type: type
+    type: type,
+    height: 300
   };
   chartInfo.yAxis = {
     title: {
