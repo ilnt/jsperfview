@@ -20,8 +20,13 @@
     });
 
     var id = $_GET['id'];
+    var filter = $_GET['filter'];
     var chart = new Chart(id);
     chart.render('container');
+
+    if (filter !== void 0 && Chart[filter] !== void 0) {
+      chart.filter(Chart[filter]);
+    }
   </script>
 
   <style>
