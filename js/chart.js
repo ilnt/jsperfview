@@ -10,6 +10,7 @@
 function Chart(testId) {
   this.testId = testId;
   this.chart = null;
+  this.filterRegexp = null;
 }
 
 Chart.URL_FORMAT = 'http://www.browserscope.org/user/tests/table/{ID}?o=json&callback=?';
@@ -26,6 +27,7 @@ Chart.prototype.render = function(id) {
   $.getJSON(url, function(data) {
     var chartInfo = parseChart_(data);
     that.chart = renderChart_(chartInfo, id, 'column');
+    that.filter(that.filterRegexp);
   });
 };
 
@@ -34,6 +36,12 @@ Chart.prototype.render = function(id) {
  * @param {object} regex Regular expression that slices in twain
  */
 Chart.prototype.filter = function(regex) {
+  this.filterRegexp = regex;
+
+  if (!this.chart || !regex) {
+    return;
+  }
+
   for (var i = 0; i < this.chart.series.length; i++) {
     var s = this.chart.series[i];
     if (s.name.match(regex)) {
